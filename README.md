@@ -4,3 +4,6 @@
 ko-component-page is a knocoutjs version of google polymer's iron-component-page
 
 # Installation
+```
+npm install ko-component-page
+```
