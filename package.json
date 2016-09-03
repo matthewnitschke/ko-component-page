@@ -1,0 +1,15 @@
+{
+  "name": "ko-component-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ko-component-page.js",
+  "dependencies": {
+    "knockout": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Nitschke <matt@pyrtio.com> (http://www.pyrtio.com)",
+  "license": "ISC"
+}
