@@ -7,18 +7,17 @@
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-  <script src="node_modules\knockout\build\output\knockout-latest.js"></script>
+  <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
 
-  <link rel="stylesheet" href="ko-component-page.css">
-  <script src="ko-component-page.js"></script>
-
-
+  <link rel="stylesheet" href="../dist/ko-component-page.css">
+  <script src="../dist/ko-component-page.js"></script>
 
 
 </head>
 <body>
 
   <ko-component-page params="{label: 'Component' }">
+    <h3>This is a value from an observable:</h3>
     <div data-bind="text: value"></div>
 
     <ko-component-page-script>
@@ -30,12 +29,11 @@
   </ko-component-page>
 
   <ko-component-page params="{label: 'Other Component'}">
-    <div>This is a component</div>
+    <div>This is an example with no view model</div>
   </ko-component-page>
 
 
-
-  <script id="scripts">
+  <script>
     ko.applyBindings();
   </script>
 </body>
