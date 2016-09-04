@@ -7,13 +7,14 @@ ko.components.register("ko-component-page", {
       var js = "";
       var vm = {};
 
-      for(var i = 1; i < nodes.length-1; i++){ // i = 1 and length-1 are for removing the first and last text nodes
+      for(var i = 0; i < nodes.length; i++){
         if (nodes[i].localName === "ko-component-page-script"){
           js = nodes[i].innerHTML;
           vm = eval("(" + nodes[i].innerHTML + ")");
-        }
-        if (nodes[i].localName !== "ko-component-page-script"){
-          html += (nodes[i].outerHTML ? nodes[i].outerHTML : '') + "\n";
+        } else if (nodes[i].nodeName === "#text"){
+          html += nodes[i].data;
+        } else {
+          html += nodes[i].outerHTML;
         }
       }
 

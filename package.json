@@ -1,6 +1,6 @@
 {
   "name": "ko-component-page",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "ko-component-page.js",
   "dependencies": {
