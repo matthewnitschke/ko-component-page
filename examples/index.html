@@ -9,14 +9,17 @@
 
   <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
 
-  <link rel="stylesheet" href="../dist/ko-component-page.css">
-  <script src="../dist/ko-component-page.js"></script>
+  <link rel="stylesheet" href="../src/lib/prism.css">
+  <script src="../src/lib/prism.js"></script>
+
+  <link rel="stylesheet" href="../src/ko-component-page.css">
+  <script src="../src/ko-component-page.js"></script>
 
 
 </head>
 <body>
 
-  <ko-component-page params="{label: 'Component' }">
+  <ko-component-page params="{label: 'Component', description: 'This is a description for this example on this component'}">
     <h3>This is a value from an observable:</h3>
     <div data-bind="text: value"></div>
 
@@ -30,6 +33,8 @@
 
   <ko-component-page params="{label: 'Other Component'}">
     <div>This is an example with no view model</div>
+
+    <div>Test</div>
   </ko-component-page>
 
 
