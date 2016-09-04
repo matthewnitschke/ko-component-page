@@ -17,9 +17,9 @@ Then include in your project
 
 # Usage
 
-```
+```html
 <ko-component-page params="{label: '<Component Label>'}">
-  <!-- Put your markup for the component here --!>
+  <!-- Put your markup for the component here -->
   <ko-component-page-script>
   {
     // put your observables for the component here
