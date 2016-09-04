@@ -7,13 +7,13 @@ ko.components.register("ko-component-page", {
       var js = "";
       var vm = {};
 
-      for(var i = 0; i < nodes.length; i++){
+      for(var i = 1; i < nodes.length-1; i++){ // i = 1 and length-1 are for removing the first and last text nodes
         if (nodes[i].localName === "ko-component-page-script"){
           js = nodes[i].innerHTML;
           vm = eval("(" + nodes[i].innerHTML + ")");
         }
-        if (nodes[i].nodeName !== "#text" && nodes[i].localName !== "ko-component-page-script"){
-          html += nodes[i].outerHTML + "\n";
+        if (nodes[i].localName !== "ko-component-page-script"){
+          html += (nodes[i].outerHTML ? nodes[i].outerHTML : '') + "\n";
         }
       }
 
@@ -22,13 +22,15 @@ ko.components.register("ko-component-page", {
 
       return {
         vm: vm,
-        label: params.label ? params.label : ''
+        label: ko.unwrap(params.label) ? params.label : '',
+        description: ko.unwrap(params.description) ? params.description : ''
       };
     }
   },
   template: `
   <div class='component-page-wrapper'>
     <div class='component-label' data-bind='text: label'></div>
+    <div class='component-description' data-bind='text: description'></div>
     <div class='component-wrapper' data-bind="with: vm">
       <div class='component-example-wrapper' data-bind='template: { nodes: $componentTemplateNodes }'></div>
       <div class='component-markup-header'>html</div>
