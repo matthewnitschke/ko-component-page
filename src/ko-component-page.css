@@ -10,10 +10,16 @@ html {
   max-width: 40rem;
   margin:auto;
 }
+.component-name {
+  font-size: 300%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
 .component-tab-button {
   display: inline-block;
-  padding: 1rem;
+  font-size: 80%;
+  padding: .8rem;
   cursor: pointer;
   background-color: #eee;
   box-sizing: border-box;

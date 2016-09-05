@@ -1,15 +1,9 @@
 ko.components.register("ko-component-page", {
   viewModel: {
     createViewModel: function(params, componentInfo){
-      var self = {};
-
-      var nodes = componentInfo.templateNodes;
-
-      for(var i = 0; i < nodes.length; i++){
-        if (nodes[i].localName === "ko-component-examples"){
-          nodes[i].style.display = 'none';
-        }
-      }
+      var self = {
+        componentName: params.componentName
+      };
 
       self.hideAllTabs = function(){
         document.querySelector(".selected").classList.remove("selected");
@@ -29,12 +23,30 @@ ko.components.register("ko-component-page", {
         event.target.classList.add('selected');
       }
 
+      var parametersFound = componentInfo.templateNodes.find(function(ele){
+        return ele.localName === "ko-component-parameters";
+      });
+
+      var examplesFound = componentInfo.templateNodes.find(function(ele){
+        return ele.localName === "ko-component-examples";
+      });
+
+      if (!examplesFound || !parametersFound){
+        document.getElementById("tabs").style.display = 'none';
+      } else {
+        examplesFound.style.display = 'none';
+      }
+
+
+
       return self;
     }
   },
   template: `
+  <div class='component-name' data-bind='text: componentName'></div>
   <div class='component-page'>
-    <div class='center' style='margin-bottom: 2rem;'>
+
+    <div class='center' style='margin: 2rem;' id="tabs">
       <div class='component-tab-button selected' data-bind='click: parametersTabClicked'>Parameters</div>
       <div class='component-tab-button' data-bind='click: examplesTabClicked'>Examples</div>
     </div>
