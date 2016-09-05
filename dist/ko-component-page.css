@@ -2,14 +2,50 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+.center {
+  text-align: center;
+}
+
+.component-page{
+  max-width: 40rem;
+  margin:auto;
+}
+.component-name {
+  font-size: 300%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.component-tab-button {
+  display: inline-block;
+  font-size: 80%;
+  padding: .8rem;
+  cursor: pointer;
+  background-color: #eee;
+  box-sizing: border-box;
+
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.component-tab-button:hover{
+    background-color: #999;
+    color: #fff;
+}
+
+.component-tab-button.selected {
+  background-color: #999;
+
+}
+
 .component-label {
   font-weight: bold;
   font-size: 150%;
 }
 
 .component-page-wrapper {
-  max-width: 40rem;
-  margin:auto;
   margin-top: 1.5rem;
   margin-bottom: 4rem;
 }
@@ -30,6 +66,48 @@ html {
   display: inline-block;
   padding: .5rem;
   color: #999;
+}
+
+.component-tab-title{
+  font-size: 200%;
+}
+.component-parameter-item {
+  padding: 1rem;
+  background-color: #eeeeee;
+  display: flex;
+  margin-bottom: .2rem;
+}
+.component-parameter-name {
+  font-weight: 600;
+  width: 15rem;
+}
+.component-parameter-type{
+  color: #2196f3;
+  text-transform: capitalize;
+  font-style: italic;
+
+}
+.component-parameter-description{
+  margin-top: .5rem;
+}
+
+.component-parameters-group-label {
+  font-size: 80%;
+  color: #aaa;
+  text-align:right;
+}
+
+.component-parameters-group {
+  border: solid #aaa 1px;
+  margin-bottom: .3rem;
+  padding: .2rem;
+  padding-bottom: 0;
+}
+
+.component-parameter-separator{
+  height: 1px;
+  background-color: #aaa;
+  width: 100%;
 }
 
 /* Prisim */
