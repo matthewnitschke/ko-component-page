@@ -19,23 +19,39 @@
 </head>
 <body>
 
-  <ko-component-page params="{label: 'Component', description: 'This is a description for this example on this component'}">
-    <h3>This is a value from an observable:</h3>
-    <div data-bind="text: value"></div>
+  <ko-component-page>
 
-    <ko-component-page-script>
-        {
-          value: ko.observable('asdf')
-        }
-    </ko-component-page-script>
+    <ko-component-parameters params="{parameters:[
+      { name: 'label', type: 'string', required: true, description: 'the title to the example' },
+      { name: 'label', type: 'string', description: 'the title to the example' },
+      { name: 'description', type: 'string', required: false, description: 'a discription to explain the example' }
+    ]}"></ko-component-parameters>
+
+    <ko-component-examples>
+
+      <ko-component-example params="{label: 'Component', description: 'This is a description for this example on this component'}">
+        <h3>This is a value from an observable:</h3>
+        <div data-bind="text: value"></div>
+
+        <ko-component-example-script>
+            {
+              value: ko.observable('asdf')
+            }
+        </ko-component-example-script>
+
+      </ko-component-example>
+
+      <ko-component-example params="{label: 'Other Component'}">
+        <div>This is an example with no view model</div>
+
+        <div>Test</div>
+      </ko-component-example>
+      
+    </ko-component-examples>
+
 
   </ko-component-page>
 
-  <ko-component-page params="{label: 'Other Component'}">
-    <div>This is an example with no view model</div>
-
-    <div>Test</div>
-  </ko-component-page>
 
 
   <script>
