@@ -1,11 +1,6 @@
 # ko-component-page
 ko-component-page is a knockoutjs version of google polymer's [iron-component-page](https://github.com/PolymerElements/iron-component-page)
 
-![image](https://cloud.githubusercontent.com/assets/6363089/18236495/c22b22f2-72e3-11e6-842b-697f84a78a08.png)
-
-![image](https://cloud.githubusercontent.com/assets/6363089/18228085/759662a2-71f9-11e6-8472-54aa62b847b5.png)
-
-
 
 # Installation
 First install via npm
@@ -20,6 +15,49 @@ Then include in your project
 ```
 
 # Usage
+
+Basic structure for the ko-component-page goes as follows
+```html
+<ko-component-page>
+  <ko-component-parameters>
+    <ko-component-parameter params="{...}"></ko-component-parameter>
+  </ko-component-parameters>
+  
+  <ko-component-examples>
+    <!-- Markup here -->
+    <ko-component-example-script>
+      {
+        // values here
+      }
+    </ko-component-example-script>
+  </ko-component-examples>
+  
+</ko-component-page>
+```
+
+There are two sections to the ko-component page, parameters and examples
+
+
+## Parameters
+![image](https://cloud.githubusercontent.com/assets/6363089/18236495/c22b22f2-72e3-11e6-842b-697f84a78a08.png)
+
+Parameters are each of the values the params property can accept. Each ko-component-parameter component must be inside the ko-component-parameters component.
+
+```html
+<ko-component-parameters>
+  <!-- the required property tells ko-component-parameters where to put it's self -->
+  <ko-component-parameter required params="{name: 'name', type: 'string', description: 'a description'}"></ko-component-parameter>
+  
+  <!-- if no required property exsists, the parameter is optional -->
+  <ko-component-parameter params="{name: 'name', type: 'string', description: 'a description'}"></ko-component-parameter>
+
+</ko-component-parameters>
+```
+
+## Examples
+![image](https://cloud.githubusercontent.com/assets/6363089/18228085/759662a2-71f9-11e6-8472-54aa62b847b5.png)
+
+examples are when you can show the functionality of your component
 
 ```html
 <ko-component-page params="{label: '<Component Label>'}">
