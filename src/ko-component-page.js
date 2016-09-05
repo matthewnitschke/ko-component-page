@@ -46,50 +46,42 @@ ko.components.register("ko-component-page", {
 });
 
 ko.components.register("ko-component-parameters", {
-  viewModel: function(params){
-    var self = this;
+  viewModel: {
+    createViewModel: function(params, componentInfo){
+      var self = {
+        requiredParameters: [],
+        optionalParameters: []
+      };
 
-    self.parameters = params.parameters;
+      var nodes = componentInfo.templateNodes;
 
-    self.requiredParameters = ko.computed(function(){
-      return ko.utils.arrayFilter(self.parameters, function(parameter) {
-          if (parameter.required == null || parameter.required == undefined || !parameter.required){
-            return false;
+      for(var i = 0; i < nodes.length; i++){
+        if (nodes[i].localName === "ko-component-parameter"){
+          if (nodes[i].attributes["required"]){
+            self.requiredParameters.push(nodes[i]);
           } else {
-            return true;
+            self.optionalParameters.push(nodes[i]);
           }
-      });
-    });
+        }
+      }
 
-    self.optionalParameters = ko.computed(function(){
-      return ko.utils.arrayFilter(self.parameters, function(parameter) {
-          if (parameter.required == null || parameter.required == undefined || !parameter.required){
-            return true;
-          } else {
-            return false;
-          }
-      });
-    })
-
+      return self;
+    }
   },
   template: `
   <div class='component-tab-title'>Parameters</div>
+
   <div class='component-parameters-group-label'>required</div>
-  <div data-bind='foreach: requiredParameters' class='component-parameters-group'>
-    <ko-component-parameter params='{data: $data}'></ko-component-parameter>
-    <div class='component-parameter-separator' data-bind="visible: $index() < $parent.requiredParameters().length - 1"></div>
-  </div>
+  <div class='component-parameters-group' data-bind="template: { nodes: requiredParameters }"></div>
+
   <div class='component-parameters-group-label'>optional</div>
-  <div data-bind='foreach: optionalParameters' class='component-parameters-group'>
-    <ko-component-parameter params='{data: $data }'></ko-component-parameter>
-    <div class='component-parameter-separator' data-bind="visible: $index() < $parent.optionalParameters().length - 1"></div>
-  </div>
+  <div class='component-parameters-group' data-bind='template: { nodes: optionalParameters }'></div>
+
   `
 });
 
 ko.components.register("ko-component-parameter", {
   viewModel: function(params){
-    params = params.data;
 
     this.name = params.name;
     this.type = params.type;

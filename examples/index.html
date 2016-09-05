@@ -21,11 +21,13 @@
 
   <ko-component-page>
 
-    <ko-component-parameters params="{parameters:[
-      { name: 'label', type: 'string', required: true, description: 'the title to the example' },
-      { name: 'label', type: 'string', description: 'the title to the example' },
-      { name: 'description', type: 'string', required: false, description: 'a discription to explain the example' }
-    ]}"></ko-component-parameters>
+    <ko-component-parameters>
+
+      <ko-component-parameter required params="{name: 'label', type: 'string', description: 'the title to the example'}"></ko-component-parameter>
+      <ko-component-parameter required params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
+      <ko-component-parameter params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
+
+    </ko-component-parameters>
 
     <ko-component-examples>
 
@@ -46,7 +48,7 @@
 
         <div>Test</div>
       </ko-component-example>
-      
+
     </ko-component-examples>
 
 

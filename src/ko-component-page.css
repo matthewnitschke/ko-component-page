@@ -63,6 +63,7 @@ html {
   padding: 1rem;
   background-color: #eeeeee;
   display: flex;
+  margin-bottom: .2rem;
 }
 .component-parameter-name {
   font-weight: 600;
@@ -87,6 +88,8 @@ html {
 .component-parameters-group {
   border: solid #aaa 1px;
   margin-bottom: .3rem;
+  padding: .2rem;
+  padding-bottom: 0;
 }
 
 .component-parameter-separator{
