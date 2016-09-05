@@ -81,12 +81,15 @@ ko.components.register("ko-component-parameters", {
   template: `
   <div class='component-tab-title'>Parameters</div>
 
-  <div class='component-parameters-group-label'>required</div>
-  <div class='component-parameters-group' data-bind="template: { nodes: requiredParameters }"></div>
+  <div data-bind="visible: requiredParameters.length > 0">
+    <div class='component-parameters-group-label'>required</div>
+    <div class='component-parameters-group' data-bind="template: { nodes: requiredParameters }"></div>
+  </div>
 
-  <div class='component-parameters-group-label'>optional</div>
-  <div class='component-parameters-group' data-bind='template: { nodes: optionalParameters }'></div>
-
+  <div data-bind="visible: optionalParameters.length > 0">
+    <div class='component-parameters-group-label'>optional</div>
+    <div class='component-parameters-group' data-bind='template: { nodes: optionalParameters }'></div>
+  </div>
   `
 });
 
