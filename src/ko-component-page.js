@@ -1,6 +1,114 @@
 ko.components.register("ko-component-page", {
   viewModel: {
     createViewModel: function(params, componentInfo){
+      var self = {};
+
+      var nodes = componentInfo.templateNodes;
+
+      for(var i = 0; i < nodes.length; i++){
+        if (nodes[i].localName === "ko-component-examples"){
+          nodes[i].style.display = 'none';
+        }
+      }
+
+      self.hideAllTabs = function(){
+        document.querySelector(".selected").classList.remove("selected");
+        document.querySelector("ko-component-parameters").style.display = 'none';
+        document.querySelector("ko-component-examples").style.display = 'none';
+      }
+
+      self.parametersTabClicked = function(data, event){
+        self.hideAllTabs();
+        document.querySelector("ko-component-parameters").style.display = '';
+        event.target.classList.add('selected');
+      }
+
+      self.examplesTabClicked = function(data, event){
+        self.hideAllTabs();
+        document.querySelector("ko-component-examples").style.display = '';
+        event.target.classList.add('selected');
+      }
+
+      return self;
+    }
+  },
+  template: `
+  <div class='component-page'>
+    <div class='center' style='margin-bottom: 2rem;'>
+      <div class='component-tab-button selected' data-bind='click: parametersTabClicked'>Parameters</div>
+      <div class='component-tab-button' data-bind='click: examplesTabClicked'>Examples</div>
+    </div>
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </div>
+  `
+});
+
+ko.components.register("ko-component-parameters", {
+  viewModel: {
+    createViewModel: function(params, componentInfo){
+      var self = {
+        requiredParameters: [],
+        optionalParameters: []
+      };
+
+      var nodes = componentInfo.templateNodes;
+
+      for(var i = 0; i < nodes.length; i++){
+        if (nodes[i].localName === "ko-component-parameter"){
+          if (nodes[i].attributes["required"]){
+            self.requiredParameters.push(nodes[i]);
+          } else {
+            self.optionalParameters.push(nodes[i]);
+          }
+        }
+      }
+
+      return self;
+    }
+  },
+  template: `
+  <div class='component-tab-title'>Parameters</div>
+
+  <div class='component-parameters-group-label'>required</div>
+  <div class='component-parameters-group' data-bind="template: { nodes: requiredParameters }"></div>
+
+  <div class='component-parameters-group-label'>optional</div>
+  <div class='component-parameters-group' data-bind='template: { nodes: optionalParameters }'></div>
+
+  `
+});
+
+ko.components.register("ko-component-parameter", {
+  viewModel: function(params){
+
+    this.name = params.name;
+    this.type = params.type;
+    this.description = params.description;
+  },
+  template: `
+  <div class='component-parameter-item'>
+    <div class='component-parameter-name' data-bind='text: name'></div>
+    <div class='component-parameter-info'>
+      <span data-bind='text: type' class='component-parameter-type'></span>
+      <div data-bind='text: description' class='component-parameter-description'></div>
+    </div>
+  </div>
+  `
+})
+
+ko.components.register("ko-component-examples",{
+  viewModel: function(){},
+  template: `
+  <div>
+    <div class='component-tab-title'>Examples</div>
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </div>
+  `
+})
+
+ko.components.register("ko-component-example", {
+  viewModel: {
+    createViewModel: function(params, componentInfo){
 
       var nodes = componentInfo.templateNodes;
       var html = "";
@@ -8,7 +116,7 @@ ko.components.register("ko-component-page", {
       var vm = {};
 
       for(var i = 0; i < nodes.length; i++){
-        if (nodes[i].localName === "ko-component-page-script"){
+        if (nodes[i].localName === "ko-component-example-script"){
           js = nodes[i].innerHTML;
           vm = eval("(" + nodes[i].innerHTML + ")");
         } else if (nodes[i].nodeName === "#text"){
@@ -43,7 +151,7 @@ ko.components.register("ko-component-page", {
   `
 });
 
-ko.components.register("ko-component-page-script", {
+ko.components.register("ko-component-example-script", {
   viewModel: function(){},
   template: "<div></div>"
 });
