@@ -17,6 +17,11 @@ html {
   cursor: pointer;
   background-color: #eee;
   box-sizing: border-box;
+
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .component-tab-button:hover{
@@ -26,6 +31,7 @@ html {
 
 .component-tab-button.selected {
   background-color: #999;
+
 }
 
 .component-label {

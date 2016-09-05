@@ -5,30 +5,28 @@ ko.components.register("ko-component-page", {
 
       var nodes = componentInfo.templateNodes;
 
-      self.parametersComponent = {};
-      self.examplesComponent = {};
-
       for(var i = 0; i < nodes.length; i++){
-        if (nodes[i].localName === "ko-component-parameters"){
-          self.parametersComponent = nodes[i];
-        } else if (nodes[i].localName === "ko-component-examples"){
-          self.examplesComponent = nodes[i];
+        if (nodes[i].localName === "ko-component-examples"){
+          nodes[i].style.display = 'none';
         }
       }
 
       self.hideAllTabs = function(){
+        document.querySelector(".selected").classList.remove("selected");
         document.querySelector("ko-component-parameters").style.display = 'none';
         document.querySelector("ko-component-examples").style.display = 'none';
       }
 
-      self.parametersTabClicked = function(){
+      self.parametersTabClicked = function(data, event){
         self.hideAllTabs();
         document.querySelector("ko-component-parameters").style.display = '';
+        event.target.classList.add('selected');
       }
 
-      self.examplesTabClicked = function(){
+      self.examplesTabClicked = function(data, event){
         self.hideAllTabs();
         document.querySelector("ko-component-examples").style.display = '';
+        event.target.classList.add('selected');
       }
 
       return self;
@@ -36,7 +34,7 @@ ko.components.register("ko-component-page", {
   },
   template: `
   <div class='component-page'>
-    <div class='center'>
+    <div class='center' style='margin-bottom: 2rem;'>
       <div class='component-tab-button selected' data-bind='click: parametersTabClicked'>Parameters</div>
       <div class='component-tab-button' data-bind='click: examplesTabClicked'>Examples</div>
     </div>
