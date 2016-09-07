@@ -15,8 +15,29 @@ Then include in your project
 ```
 
 # Usage
+ko-component-page consists of 6 different components
 
-Basic structure for the ko-component-page goes as follows
+```html
+<!-- Main wrapper component -->
+<ko-component-page></ko-component-page>
+
+<!-- Parameter wrapper component -->
+<ko-component-parameters></ko-component-parameters>
+
+<!-- Parameter component -->
+<ko-component-parameter></ko-component-parameter>
+
+<!-- Example wrapper component -->
+<ko-component-examples></ko-component-examples>
+
+<!-- Example component -->
+<ko-component-example></ko-componen-example>
+
+<!-- Example script component -->
+<ko-component-example-script></ko-component-example-script>
+```
+
+They are used as follows
 ```html
 <ko-component-page>
   <ko-component-parameters>
