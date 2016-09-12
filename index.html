@@ -1,1 +1,52 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="src/ko-component-page.css">
+
+  <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
+  <script src="src/ko-component-page.js"></script>
+</head>
+<body>
+
+  <ko-component-page params="{componentName: '<ko-component-parameters>'}">
+
+    <ko-component-parameters>
+
+      <ko-component-parameter required params="{name: 'label', type: 'string', description: 'the title to the example'}"></ko-component-parameter>
+      <ko-component-parameter required params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
+      <ko-component-parameter params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
+
+    </ko-component-parameters>
+
+    <ko-component-examples>
+
+      <ko-component-example params="{label: 'Component', description: 'This is a description for this example on this component'}">
+        <h3>This is a value from an observable:</h3>
+        <div data-bind="text: value"></div>
+
+        <ko-component-example-script>
+            {
+              value: ko.observable('asdf')
+            }
+        </ko-component-example-script>
+
+      </ko-component-example>
+
+      <ko-component-example params="{label: 'Other Component'}">
+        <div>This is an example with no view model</div>
+
+        <div>Test</div>
+      </ko-component-example>
+
+    </ko-component-examples>
+
+
+  </ko-component-page>
+
+</body>
+</html>
