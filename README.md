@@ -1,6 +1,7 @@
 # ko-component-page
 ko-component-page is a knockoutjs version of google polymer's [iron-component-page](https://github.com/PolymerElements/iron-component-page)
 
+Working [demo](https://matthewnitschke.github.io/ko-component-page/)
 
 # Installation
 First install via npm
