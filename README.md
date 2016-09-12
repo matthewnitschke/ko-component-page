@@ -10,7 +10,7 @@ npm install ko-component-page
 ```
 
 Then include in your project
-```
+```html
 <link rel="stylesheet" href="node_modules/ko-component-page/dist/ko-component-page.css">
 <script src="node_modules/ko-component-page/dist/ko-component-page.js"></script>
 ```
