@@ -15,34 +15,36 @@
 </head>
 <body>
 
-  <ko-component-page params="{componentName: '<ko-component-parameters>'}">
+  <ko-component-page params="{componentName: '<example-component>'}">
 
     <ko-component-parameters>
 
-      <ko-component-parameter required params="{name: 'label', type: 'string', description: 'the title to the example'}"></ko-component-parameter>
-      <ko-component-parameter required params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
-      <ko-component-parameter params="{name: 'description', type: 'string', description: 'A description to explain the example'}"></ko-component-parameter>
+      <ko-component-parameter required params="{name: 'requiredParameter', type: 'string', description: 'This is an example of a required parameter'}"></ko-component-parameter>
+      <ko-component-parameter required params="{name: 'anotherRequiredParameter', type: 'string', description: 'This is an example of another required parameter'}"></ko-component-parameter>
+      <ko-component-parameter params="{name: 'optionalParameter', type: 'string', description: 'This is an example of an optional parameter'}"></ko-component-parameter>
 
     </ko-component-parameters>
 
     <ko-component-examples>
 
-      <ko-component-example params="{label: 'Component', description: 'This is a description for this example on this component'}">
-        <h3>This is a value from an observable:</h3>
-        <div data-bind="text: value"></div>
+      <ko-component-example params="{label: 'Working ViewModel', description: 'This is an example with a working view model'}">
+        <span>Enter your name:</span><input data-bind="textInput: value"/>
+
+        <div>
+          Your name is: <span data-bind="text: value"></span>
+        </div>
+
 
         <ko-component-example-script>
             {
-              value: ko.observable('asdf')
+              value: ko.observable('')
             }
         </ko-component-example-script>
 
       </ko-component-example>
 
-      <ko-component-example params="{label: 'Other Component'}">
+      <ko-component-example params="{label: 'No ViewModel'}">
         <div>This is an example with no view model</div>
-
-        <div>Test</div>
       </ko-component-example>
 
     </ko-component-examples>
