@@ -42,8 +42,7 @@ ko.components.register("ko-component-page", {
       return self;
     }
   },
-  template: "
-  <div class='component-name' data-bind='text: componentName'></div>\
+  template: "<div class='component-name' data-bind='text: componentName'></div>\
   <div class='component-page'>\
     <div class='center' style='margin: 2rem;' id='tabs'>\
       <div class='component-tab-button selected' data-bind='click: parametersTabClicked'>Parameters</div>\
@@ -76,8 +75,7 @@ ko.components.register("ko-component-parameters", {
       return self;
     }
   },
-  template: "
-  <div class='component-tab-title'>Parameters</div>\
+  template: "<div class='component-tab-title'>Parameters</div>\
   <div data-bind='visible: requiredParameters.length > 0'>\
     <div class='component-parameters-group-label'>required</div>\
     <div class='component-parameters-group' data-bind='template: { nodes: requiredParameters }'></div>\
@@ -95,8 +93,7 @@ ko.components.register("ko-component-parameter", {
     this.type = params.type;
     this.description = params.description;
   },
-  template: "
-  <div class='component-parameter-item'>\
+  template: "<div class='component-parameter-item'>\
     <div class='component-parameter-name' data-bind='text: name'></div>\
     <div class='component-parameter-info'>\
       <span data-bind='text: type' class='component-parameter-type'></span>\
@@ -107,8 +104,7 @@ ko.components.register("ko-component-parameter", {
 
 ko.components.register("ko-component-examples",{
   viewModel: function(){},
-  template: "
-  <div>\
+  template: "<div>\
     <div class='component-tab-title'>Examples</div>\
     <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->\
   </div>"
@@ -144,8 +140,7 @@ ko.components.register("ko-component-example", {
       };
     }
   },
-  template: "
-  <div class='component-page-wrapper'>\
+  template: "<div class='component-page-wrapper'>\
     <div class='component-label' data-bind='text: label'></div>\
     <div class='component-description' data-bind='text: description'></div>\
     <div class='component-wrapper' data-bind='with: vm'>\
