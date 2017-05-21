@@ -4,6 +4,18 @@ ko-component-page is a knockoutjs version of google polymer's [iron-component-pa
 Working [demo](https://matthewnitschke.github.io/ko-component-page/)
 
 # Installation
+
+### Yeoman
+See [generator-ko-component-page](https://github.com/matthewnitschke/generator-ko-component-page) for how the generator works
+```
+npm install generator-ko-component-page -g
+
+cd /your-directory
+
+yo ko-component-page
+```
+
+### Manually
 First install via npm
 ```
 npm install ko-component-page
